@@ -4,7 +4,6 @@ import Domain from './Domain';
 import { useFocusEffect } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon5 from 'react-native-vector-icons/FontAwesome5';
-import { URL_IP_ADDRESS } from '@env';
 
 export default function DetailStudents({ route, navigation }) {
     const [loading, setLoading] = useState(false);
@@ -19,7 +18,8 @@ export default function DetailStudents({ route, navigation }) {
     const [emailaddress, setEmailaddress] = useState()
 
     const getDetailDataStudents = () => {
-        fetch(URL_IP_ADDRESS + 'api/students/' + route.params.id, {
+        // Sesuaikan ip address
+        fetch('http://10.235.204.137:8000/api/students/' + route.params.id, {
             method: 'GET',
             headers: {
                 Accept: 'application/json'
@@ -43,7 +43,7 @@ export default function DetailStudents({ route, navigation }) {
 
     const deletedData = async () => {
         setLoading(true);
-        await fetch(URL_IP_ADDRESS + 'api/students/' + route.params.id, {
+        await fetch('http://10.235.204.137:8000/api/students/' + route.params.id, {
             method: 'DELETE',
             headers: {
                 Accept: 'application/json',

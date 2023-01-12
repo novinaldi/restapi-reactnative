@@ -11,7 +11,6 @@ import {
 import React, { useState, useEffect, useCallback } from 'react';
 import { TextInput } from 'react-native-paper';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { URL_IP_ADDRESS } from '@env';
 import { useFocusEffect } from '@react-navigation/native';
 
 export default function FormEditStudents({ route, navigation }) {
@@ -53,7 +52,7 @@ export default function FormEditStudents({ route, navigation }) {
     );
 
     const getDetailDataStudents = () => {
-        fetch(URL_IP_ADDRESS + 'api/students/' + route.params.id, {
+        fetch('http://10.235.204.137:8000/api/students/' + route.params.id, {
             method: 'GET',
             headers: {
                 Accept: 'application/json'
@@ -73,7 +72,7 @@ export default function FormEditStudents({ route, navigation }) {
 
     const updateData = async () => {
         setLoading(true);
-        await fetch(URL_IP_ADDRESS + 'api/students/' + route.params.id, {
+        await fetch('http://10.235.204.137:8000/api/students/' + route.params.id, {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
